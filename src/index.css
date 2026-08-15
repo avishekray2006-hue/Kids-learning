@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e293b, #4338ca);
+  overflow-x: hidden;
+}
+
