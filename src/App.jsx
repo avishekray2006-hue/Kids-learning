@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -41,26 +41,47 @@ function App() {
 
       <Routes>
 
-        {/* ================= PUBLIC PAGES ================= */}
-
+        {/* Public Routes */}
         <Route path="/" element={<Signup />} />
-
-        <Route path="/home" element={<Home />} />
-
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
-        <Route path="/Signup" element={<Signup />} />
+        {/* Protected Routes */}
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/courses" element={<Courses />} />
+        <Route
+          path="/courses"
+          element={
+            <ProtectedRoute>
+              <Courses />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/quiz" element={<Quiz />} />
+        <Route
+          path="/quiz"
+          element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/help" element={<Help />} />
-
-
-
-
-        {/* ================= PROTECTED PROFILE ================= */}
+        <Route
+          path="/help"
+          element={
+            <ProtectedRoute>
+              <Help />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/profile"
@@ -71,50 +92,195 @@ function App() {
           }
         />
 
+        {/* Courses - Protected */}
+        <Route
+          path="/alphabet"
+          element={
+            <ProtectedRoute>
+              <Alphabet />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* ================= LEARNING PAGES ================= */}
+        <Route
+          path="/numbers"
+          element={
+            <ProtectedRoute>
+              <Numbers />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/alphabet" element={<Alphabet />} />
+        <Route
+          path="/hindialphabet"
+          element={
+            <ProtectedRoute>
+              <HindiAlphabet />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/numbers" element={<Numbers />} />
+        <Route
+          path="/wildanimals"
+          element={
+            <ProtectedRoute>
+              <WildAnimals />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/hindialphabet" element={<HindiAlphabet />} />
+        <Route
+          path="/petanimals"
+          element={
+            <ProtectedRoute>
+              <PetAnimals />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/wildanimals" element={<WildAnimals />} />
+        <Route
+          path="/fruits"
+          element={
+            <ProtectedRoute>
+              <Fruits />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/petanimals" element={<PetAnimals />} />
+        <Route
+          path="/vegetables"
+          element={
+            <ProtectedRoute>
+              <Vegetables />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/fruits" element={<Fruits />} />
+        <Route
+          path="/colours"
+          element={
+            <ProtectedRoute>
+              <Colours />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/vegetables" element={<Vegetables />} />
+        <Route
+          path="/tables"
+          element={
+            <ProtectedRoute>
+              <Tables />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/colours" element={<Colours />} />
+        <Route
+          path="/year"
+          element={
+            <ProtectedRoute>
+              <Year />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/tables" element={<Tables />} />
+        <Route
+          path="/birds"
+          element={
+            <ProtectedRoute>
+              <Birds />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/year" element={<Year />} />
+        <Route
+          path="/bodyPart"
+          element={
+            <ProtectedRoute>
+              <BodyParts />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/birds" element={<Birds />} />
+        <Route
+          path="/flowers"
+          element={
+            <ProtectedRoute>
+              <Flowers />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/bodyPart" element={<BodyParts />} />
+        <Route
+          path="/vehicles"
+          element={
+            <ProtectedRoute>
+              <Vehicles />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/flowers" element={<Flowers />} />
+        <Route
+          path="/shapes"
+          element={
+            <ProtectedRoute>
+              <Shapes />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/vehicles" element={<Vehicles />} />
+        <Route
+          path="/days"
+          element={
+            <ProtectedRoute>
+              <Days />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/shapes" element={<Shapes />} />
+        <Route
+          path="/computers"
+          element={
+            <ProtectedRoute>
+              <Computers />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/days" element={<Days />} />
+        <Route
+          path="/foodItems"
+          element={
+            <ProtectedRoute>
+              <FoodItems />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/computers" element={<Computers />} />
+        <Route
+          path="/seasons"
+          element={
+            <ProtectedRoute>
+              <Seasons />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/foodItems" element={<FoodItems />} />
+        <Route
+          path="/tts"
+          element={
+            <ProtectedRoute>
+              <TextToSpeech />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/seasons" element={<Seasons />} />
-
-        <Route path="/tts" element={<TextToSpeech />} />
-
-        <Route path="/gk" element={<GK />} />
+        <Route
+          path="/gk"
+          element={
+            <ProtectedRoute>
+              <GK />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
 
