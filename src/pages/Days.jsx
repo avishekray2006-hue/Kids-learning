@@ -6,6 +6,8 @@ function Days() {
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
 
+  const item = days[current];
+
   const nextDay = () => {
     if (current < days.length - 1) {
       setCurrent(current + 1);
@@ -18,14 +20,17 @@ function Days() {
     }
   };
 
+  const progress = ((current + 1) / days.length) * 100;
+
   const containerStyles = {
     minHeight: "100vh",
-    background: "linear-gradient(135deg, #1e293b, #bbca38)",
+    background: "linear-gradient(135deg, #0f172a, #0369a1, #2563eb)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px"
+    padding: "30px 20px",
+    boxSizing: "border-box",
   };
 
   const backButtonStyles = {
@@ -33,103 +38,168 @@ function Days() {
     top: "80px",
     left: "20px",
     padding: "10px 20px",
-    fontSize: "16px",
     border: "none",
-    borderRadius: "8px",
-    background: "rgba(255, 255, 255, 0.2)",
+    borderRadius: "10px",
+    background: "rgba(255,255,255,0.15)",
     color: "white",
+    fontSize: "16px",
+    fontWeight: "bold",
     cursor: "pointer",
-    transition: "all 0.3s ease",
     backdropFilter: "blur(10px)",
-    fontWeight: "bold"
+  };
+
+  const headingStyles = {
+    color: "white",
+    fontSize: "42px",
+    marginBottom: "8px",
+    textAlign: "center",
+  };
+
+  const subtitleStyles = {
+    color: "#dbeafe",
+    fontSize: "16px",
+    marginBottom: "25px",
+    textAlign: "center",
   };
 
   const cardStyles = {
+    width: "100%",
+    maxWidth: "450px",
     background: "white",
-    padding: "40px",
-    borderRadius: "15px",
+    borderRadius: "25px",
+    padding: "35px",
+    boxSizing: "border-box",
     textAlign: "center",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.15)",
-    width: "400px"
+    boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
   };
 
-  const h1Styles = {
-    fontSize: "32px",
-    color: "#333",
-    marginBottom: "10px"
+  const progressContainerStyles = {
+    width: "100%",
+    height: "10px",
+    background: "#e2e8f0",
+    borderRadius: "10px",
+    overflow: "hidden",
+    marginBottom: "10px",
   };
 
-  const h3Styles = {
+  const progressStyles = {
+    width: `${progress}%`,
+    height: "100%",
+    background: "linear-gradient(90deg, #2563eb, #06b6d4)",
+    borderRadius: "10px",
+    transition: "width 0.4s ease",
+  };
+
+  const countStyles = {
+    color: "#64748b",
     fontSize: "14px",
-    color: "#666",
-    marginBottom: "20px"
+    fontWeight: "bold",
+    marginBottom: "20px",
+  };
+
+  const dayBoxStyles = {
+    width: "220px",
+    height: "220px",
+    margin: "0 auto 20px",
+    borderRadius: "20px",
+    background: "linear-gradient(135deg, #dbeafe, #cffafe)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
   };
 
   const emojiStyles = {
-    fontSize: "100px",
-    marginBottom: "15px"
+    fontSize: "90px",
+    marginBottom: "10px",
   };
 
-  const h2Styles = {
-    fontSize: "28px",
-    color: "#444",
-    marginBottom: "30px",
-    fontWeight: "600"
+  const nameStyles = {
+    fontSize: "30px",
+    color: "#1e293b",
+    marginBottom: "25px",
+    fontWeight: "bold",
   };
 
   const buttonGroupStyles = {
     display: "flex",
-    gap: "10px"
+    gap: "12px",
   };
 
   const buttonStyles = {
-    padding: "12px 25px",
-    fontSize: "16px",
-    border: "none",
-    borderRadius: "8px",
-    background: "#2196f3",
-    color: "white",
-    cursor: "pointer",
     flex: 1,
-    transition: "0.3s"
+    padding: "13px 15px",
+    border: "none",
+    borderRadius: "12px",
+    background: "#2563eb",
+    color: "white",
+    fontSize: "16px",
+    fontWeight: "bold",
+    cursor: "pointer",
+  };
+
+  const disabledButtonStyles = {
+    ...buttonStyles,
+    background: "#cbd5e1",
+    cursor: "not-allowed",
   };
 
   const mediaQueryStyles = `
     @media (max-width: 768px) {
-      .day-back-btn {
+      .days-back-btn {
         top: 70px !important;
         left: 15px !important;
         padding: 8px 15px !important;
         font-size: 14px !important;
       }
+
+      .days-heading {
+        font-size: 32px !important;
+      }
+
       .days-card {
-        width: 90% !important;
-        padding: 30px !important;
+        width: 95% !important;
+        padding: 25px !important;
       }
-      .days-emoji {
-        font-size: 80px !important;
+
+      .days-box {
+        width: 190px !important;
+        height: 190px !important;
       }
-      .day-btn {
-        padding: 10px 15px !important;
-        font-size: 14px !important;
+
+      .days-name {
+        font-size: 26px !important;
       }
     }
 
     @media (max-width: 480px) {
-      .day-back-btn {
-        top: 65px !important;
-        left: 10px !important;
-        padding: 8px 12px !important;
-        font-size: 12px !important;
+      .days-container {
+        padding: 20px 12px !important;
       }
+
+      .days-heading {
+        font-size: 27px !important;
+      }
+
       .days-card {
         width: 100% !important;
         padding: 20px !important;
       }
-      .days-emoji {
-        font-size: 60px !important;
+
+      .days-box {
+        width: 160px !important;
+        height: 160px !important;
       }
-      .day-btn-group {
+
+      .days-emoji {
+        font-size: 65px !important;
+      }
+
+      .days-name {
+        font-size: 23px !important;
+      }
+
+      .days-button-group {
         flex-direction: column !important;
       }
     }
@@ -138,31 +208,78 @@ function Days() {
   return (
     <>
       <style>{mediaQueryStyles}</style>
-      <div className="days-container" style={containerStyles}>
-        <button 
-          className="day-back-btn"
+
+      <div
+        className="days-container"
+        style={containerStyles}
+      >
+        {/* Back Button */}
+        <button
+          className="days-back-btn"
           style={backButtonStyles}
           onClick={() => navigate(-1)}
-          onMouseEnter={(e) => e.target.style.background = "rgba(255, 255, 255, 0.4)"}
-          onMouseLeave={(e) => e.target.style.background = "rgba(255, 255, 255, 0.2)"}
         >
           ← Back
         </button>
 
-        <div className="days-card" style={cardStyles}>
-          <h1 style={h1Styles}>Days of the Week</h1>
-          <h3 style={h3Styles}>{current + 1} / {days.length}</h3>
+        {/* Heading */}
+        <h1
+          className="days-heading"
+          style={headingStyles}
+        >
+          📅 Days of the Week
+        </h1>
 
-          <div className="days-emoji" style={emojiStyles}>
-            {days[current].emoji}
+        <p style={subtitleStyles}>
+          Learn the days of the week
+        </p>
+
+        {/* Card */}
+        <div
+          className="days-card"
+          style={cardStyles}
+        >
+          {/* Progress Bar */}
+          <div style={progressContainerStyles}>
+            <div style={progressStyles}></div>
           </div>
 
-          <h2 style={h2Styles}>{days[current].name}</h2>
+          {/* Counter */}
+          <div style={countStyles}>
+            {current + 1} / {days.length}
+          </div>
 
-          <div className="day-btn-group" style={buttonGroupStyles}>
+          {/* Day */}
+          <div
+            className="days-box"
+            style={dayBoxStyles}
+          >
+            <div
+              className="days-emoji"
+              style={emojiStyles}
+            >
+              {item.emoji || "📅"}
+            </div>
+          </div>
+
+          <h2
+            className="days-name"
+            style={nameStyles}
+          >
+            {item.name}
+          </h2>
+
+          {/* Buttons */}
+          <div
+            className="days-button-group"
+            style={buttonGroupStyles}
+          >
             <button
-              className="day-btn"
-              style={{...buttonStyles, opacity: current === 0 ? 0.6 : 1}}
+              style={
+                current === 0
+                  ? disabledButtonStyles
+                  : buttonStyles
+              }
               onClick={prevDay}
               disabled={current === 0}
             >
@@ -170,12 +287,17 @@ function Days() {
             </button>
 
             <button
-              className="day-btn"
-              style={{...buttonStyles, opacity: current === days.length - 1 ? 0.6 : 1}}
+              style={
+                current === days.length - 1
+                  ? disabledButtonStyles
+                  : buttonStyles
+              }
               onClick={nextDay}
               disabled={current === days.length - 1}
             >
-              {current === days.length - 1 ? "Finish ✅" : "Next ➡"}
+              {current === days.length - 1
+                ? "Finish ✅"
+                : "Next ➡"}
             </button>
           </div>
         </div>
