@@ -155,24 +155,21 @@ function Courses() {
         .courses-page {
           min-height: 100vh;
           padding: 55px 6%;
-          background:
-            radial-gradient(circle at top left, #e0e7ff 0%, transparent 35%),
-            radial-gradient(circle at bottom right, #dbeafe 0%, transparent 35%),
-            #f8fafc;
+          background: #f4f7fb;
         }
 
         /* ================= HEADER ================= */
 
         .courses-header {
-          text-align: center;
-          max-width: 800px;
+          text-align: left;
+          max-width: 1250px;
           margin: 0 auto 50px;
         }
 
         .courses-badge {
           display: inline-block;
           padding: 8px 18px;
-          border-radius: 30px;
+          border-radius: 6px;
           background: #e0e7ff;
           color: #4338ca;
           font-size: 14px;
@@ -202,7 +199,7 @@ function Courses() {
 
         .course-stats {
           display: flex;
-          justify-content: center;
+          justify-content: flex-start;
           gap: 15px;
           margin-top: 25px;
           flex-wrap: wrap;
@@ -211,8 +208,9 @@ function Courses() {
         .stat-box {
           background: white;
           padding: 12px 20px;
-          border-radius: 12px;
-          box-shadow: 0 5px 15px rgba(15, 23, 42, 0.08);
+          border: 1px solid #dbe3ec;
+          border-radius: 6px;
+          box-shadow: none;
           color: #334155;
           font-weight: 600;
         }
@@ -223,8 +221,8 @@ function Courses() {
           max-width: 1250px;
           margin: auto;
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 25px;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 18px;
         }
 
         /* ================= CARD ================= */
@@ -233,17 +231,22 @@ function Courses() {
           position: relative;
           overflow: hidden;
           background: white;
-          border-radius: 22px;
+          border-radius: 8px;
           padding: 25px 20px;
           text-decoration: none;
           border: 1px solid #e2e8f0;
-          box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+          box-shadow: none;
           transition: all 0.35s ease;
         }
 
         .course-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+        }
+
+        .course-card:focus-visible {
+          outline: 3px solid #f59e0b;
+          outline-offset: 3px;
         }
 
         /* Top line */
@@ -266,7 +269,7 @@ function Courses() {
           right: 15px;
           width: 30px;
           height: 30px;
-          border-radius: 50%;
+          border-radius: 6px;
           background: #f1f5f9;
           color: #64748b;
           display: flex;
@@ -282,7 +285,7 @@ function Courses() {
           width: 82px;
           height: 82px;
           margin: 10px auto 18px;
-          border-radius: 22px;
+          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -325,7 +328,7 @@ function Courses() {
           gap: 7px;
           width: 100%;
           padding: 11px 15px;
-          border-radius: 12px;
+          border-radius: 6px;
           background: var(--course-color);
           color: white;
           font-size: 14px;
@@ -349,7 +352,7 @@ function Courses() {
 
         @media (max-width: 1100px) {
           .courses-grid {
-            grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           }
         }
 
@@ -365,6 +368,14 @@ function Courses() {
 
           .courses-header h1 {
             font-size: 36px;
+          }
+
+          .courses-header {
+            text-align: center;
+          }
+
+          .course-stats {
+            justify-content: center;
           }
         }
 

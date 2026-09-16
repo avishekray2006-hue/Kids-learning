@@ -47,13 +47,6 @@ function WildAnimals() {
     fontWeight: "bold",
   };
 
-  const h1Styles = {
-    fontSize: "40px",
-    color: "white",
-    marginBottom: "25px",
-    textAlign: "center",
-  };
-
   const cardStyles = {
     background: "white",
     padding: "30px",

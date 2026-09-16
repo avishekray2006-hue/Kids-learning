@@ -6,7 +6,7 @@ function Home() {
 
   const pageStyle = {
     minHeight: "calc(100vh - 80px)",
-    background: "linear-gradient(blacl,red,orenge)",
+    background: "#f8fafc",
     fontFamily: "Arial, sans-serif",
     color: "#1e293b",
   };

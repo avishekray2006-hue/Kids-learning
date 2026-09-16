@@ -28,7 +28,7 @@ function Signup() {
     setLoading(true);
 
     try {
-      const data = await registerUser(formData);
+      await registerUser(formData);
 
       setMessage("Registration successful 🎉");
 
