@@ -1,10 +1,8 @@
 const configuredApiUrl = import.meta.env.VITE_API_URL;
 
-const API_URL = configuredApiUrl
-  ? configuredApiUrl.replace(/\/$/, "")
-  : import.meta.env.DEV
-    ? "http://localhost:5000/api/auth"
-    : "https://kids-learning-1-bops.onrender.com/api/auth";
+const API_URL = import.meta.env.DEV
+  ? (configuredApiUrl || "http://localhost:5000/api/auth").replace(/\/$/, "")
+  : "https://kids-learning-1-bops.onrender.com/api/auth";
 
 const request = async (path, options) => {
   if (!API_URL) {
