@@ -4,7 +4,7 @@ const API_URL = configuredApiUrl
   ? configuredApiUrl.replace(/\/$/, "")
   : import.meta.env.DEV
     ? "http://localhost:5000/api/auth"
-    : null;
+    : "https://kids-learning-1-bops.onrender.com/api/auth";
 
 const request = async (path, options) => {
   if (!API_URL) {
