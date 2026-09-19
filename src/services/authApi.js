@@ -1,5 +1,33 @@
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api/auth";
+const configuredApiUrl = import.meta.env.VITE_API_URL;
+
+const API_URL = configuredApiUrl
+  ? configuredApiUrl.replace(/\/$/, "")
+  : import.meta.env.DEV
+    ? "http://localhost:5000/api/auth"
+    : null;
+
+const request = async (path, options) => {
+  if (!API_URL) {
+    throw new Error("Backend API URL is not configured");
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/${path}`, options);
+    const data = await getResponseData(response);
+
+    if (!response.ok) {
+      throw new Error(data.message || "Request failed");
+    }
+
+    return data;
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error("Unable to connect to the backend server");
+    }
+
+    throw error;
+  }
+};
 
 const getResponseData = async (response) => {
   const contentType = response.headers.get("content-type") || "";
@@ -12,37 +40,21 @@ const getResponseData = async (response) => {
 };
 
 export const registerUser = async (userData) => {
-  const response = await fetch(`${API_URL}/register`, {
+  return request("register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(userData),
   });
-
-  const data = await getResponseData(response);
-
-  if (!response.ok) {
-    throw new Error(data.message || "Registration failed");
-  }
-
-  return data;
 };
 
 export const loginUser = async (loginData) => {
-  const response = await fetch(`${API_URL}/login`, {
+  return request("login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(loginData),
   });
-
-  const data = await getResponseData(response);
-
-  if (!response.ok) {
-    throw new Error(data.message || "Login failed");
-  }
-
-  return data;
 };
